@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 
+
 class Toggler extends Component {
     state = {
         lang: {
@@ -8,18 +9,20 @@ class Toggler extends Component {
         }
     };
     render() {
-        const {
-            onRenderButtonText,
-            isToggleOn
-        } = this.props;
+        const { onRenderButtonText, isToggleOn } = this.props;
         const { ua, en } = this.state.lang;
         return (
             <React.Fragment>
-                <button onClick={onRenderButtonText}>{isToggleOn ? 'UA' : 'EN'}</button>
-                <p>{isToggleOn ? ua : en}</p>
+                <button onClick={ onRenderButtonText }> { isToggleOn ? 'UA' : 'EN' } </button>
+                <p>{ isToggleOn ? ua : en }</p>
             </React.Fragment>
         );
     }
 }
+
+//PropTypes
+
+
+
 
 export default Toggler;

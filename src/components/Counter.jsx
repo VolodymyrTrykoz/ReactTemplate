@@ -5,19 +5,20 @@ class Counter extends Component{
         console.log('Unmount');
     }
    render(){
+       const {counter} = this.props;
         return (
             <div className={"counters__item"}>
-                {this.props.counter.value}
+                {counter.value}
                 <button onClick=
-                    {()=> this.props.onCalculate(this.props.counter, 1)}
+                    {()=> this.props.onCalculate(counter, 1)}
                     >Increment
                 </button>
                 <button onClick=
-                    {()=> this.props.onCalculate(this.props.counter, -1)}
+                    {()=> this.props.onCalculate(counter, -1)}
                     >Decrement
                 </button>
                 <button onClick=
-                    {()=> this.props.onDelete(this.props.counter.id)}
+                    {()=> this.props.onDelete(counter.id)}
                     >Remove
                 </button>
             </div>

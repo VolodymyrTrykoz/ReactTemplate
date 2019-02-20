@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import Counter from './counter';
-import JustText from './justText';
-import Clock from './clock';
-import Toggler from './buttonToggle';
+import Counter from './Counter';
+import JustText from './JustText';
+import Clock from './Clock';
+import Toggler from './ButtonToggle';
+import Form from './Form';
 
 class Counters extends Component{
     state = {
@@ -23,7 +24,7 @@ class Counters extends Component{
         const countRendered = this.state.counters.filter(item => item.id !== counterId);
         this.setState({counters:countRendered});
     };
-    handleCalculate = (counter, numb) => {
+    handleCalculate = (counter, numb ) => {
         const counters = [...this.state.counters];
         const index = counters.indexOf(counter);
         counters[index] = {...counter};
@@ -41,6 +42,15 @@ class Counters extends Component{
     };
 
     render(){
+        let clock;
+        let userName;
+        const {isToggleOn} = this.state;
+        clock = <Clock onClickShowConsoleMessage={this.handleConsole}/>;
+        if(isToggleOn){
+            userName =  <JustText name={this.state.names[0]} />;
+        }
+
+
         return(
             <React.Fragment>
                 <div className={"counters__wrapper"}>
@@ -52,13 +62,16 @@ class Counters extends Component{
                             counter={counter}
                         />
                     )}
-                        <JustText name={this.state.names[0]} />
-                        <Clock onClickShowConsoleMessage={this.handleConsole}/>
-                        <Toggler
-                            onRenderButtonText={this.renderButtonText}
-                            isToggleOn={this.state.isToggleOn}
-                        />
+
+                    {userName}
+                    {clock}
+
+                    <Toggler
+                        onRenderButtonText={this.renderButtonText}
+                        isToggleOn={isToggleOn}
+                    />
                 </div>
+                <Form/>
             </React.Fragment>
         )
     }

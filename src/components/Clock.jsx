@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+
 class Clock extends Component{
     state = {
         dates: [
@@ -29,12 +30,14 @@ class Clock extends Component{
 
 
     render() {
+        const {onClickShowConsoleMessage} = this.props;
         return (
             <div>
                 <h2>Current time is {this.state.dates[0].value.toLocaleTimeString()}.</h2>
-                <button onClick={this.props.onClickShowConsoleMessage}>Show console message</button>
+                <button onClick={onClickShowConsoleMessage}>Show console message</button>
             </div>
         );
     }
 }
+
 export default Clock;
