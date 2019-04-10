@@ -1,19 +1,52 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+
+
 
 class Counter extends Component{
+    static propTypes = {
+        name: PropTypes.object.isRequired
+    };
+
+    buttonIncrease = {
+        backgroundColor: "#82e382",
+    }
+
+    buttonDecrease = {
+        backgroundColor: "pink",
+    }
+
     componentWillUnmount(){
         console.log('Unmount');
     }
-   render(){
-       const {counter} = this.props;
+
+    getCounterValue = (value) => {
+        if (value === 0) {
+            return  <span className={'zero'}>Zero</span>
+        }
+        else if (value <= 0) {
+            return 0;
+        }
+        else {
+            return value;
+        }
+    }
+
+    render(){
+        const {counter} = this.props;
+
         return (
             <div className={"counters__item"}>
-                {counter.value}
-                <button onClick=
+                {this.getCounterValue(counter.value)}
+                <button
+                    style={this.buttonIncrease}
+                    onClick=
                     {()=> this.props.onCalculate(counter, 1)}
                     >Increment
                 </button>
-                <button onClick=
+                <button
+                    style={this.buttonDecrease}
+                    onClick=
                     {()=> this.props.onCalculate(counter, -1)}
                     >Decrement
                 </button>

@@ -30,6 +30,7 @@ class Counters extends Component{
         counters[index] = {...counter};
         counters[index].value+=numb;
         this.setState({counters});
+
     };
     handleConsole = () => {
         console.log('Bubbling user`s event from child component')
@@ -64,14 +65,18 @@ class Counters extends Component{
                     )}
 
                     {userName}
+
                     {clock}
 
                     <Toggler
                         onRenderButtonText={this.renderButtonText}
                         isToggleOn={isToggleOn}
                     />
+
                 </div>
+
                 <Form/>
+
             </React.Fragment>
         )
     }
